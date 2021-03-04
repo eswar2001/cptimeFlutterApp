@@ -25,7 +25,8 @@ class _MyAppState extends State<MyApp> {
 
   Widget build(BuildContext context) {
     return MaterialApp(
-      color: Colors.black,
+      title: "CpTime",
+      darkTheme: ThemeData.dark(),
       debugShowCheckedModeBanner: false,
       initialRoute: '/',
       routes: {
@@ -46,63 +47,197 @@ class _MyAppState extends State<MyApp> {
             platform(futureContest, "topcoder"),
       },
       home: Builder(
-        builder: (context) => Center(
+        builder: (context) => Container(
+          padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+          decoration: BoxDecoration(
+            color: Colors.black87,
+          ),
+          margin: EdgeInsets.all(16),
           child: ListView(
             children: [
-              TextButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, '/upcoming');
-                },
-                child: Text('upcoming'),
+              
+              Card(
+                clipBehavior: Clip.antiAlias,
+                margin: EdgeInsets.all(5.0),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20)),
+                semanticContainer: true,
+                color: Colors.grey[900],
+                child: Container(
+                  child: OutlinedButton(
+                    style: OutlinedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(18.0),
+                      ),
+                      side: BorderSide(width: 2, color: Colors.cyan),
+                    ),
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/upcoming');
+                    },
+                    child: Text('upcoming'),
+                  ),
+                ),
               ),
-              TextButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, '/ongoing');
-                },
-                child: Text('ongoing'),
+              Card(
+                clipBehavior: Clip.antiAlias,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20)),
+                color: Colors.grey[900],
+                child: Container(
+                  child: OutlinedButton(
+                    style: OutlinedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(18.0),
+                      ),
+                      side: BorderSide(width: 2, color: Colors.cyan),
+                    ),
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/ongoing');
+                    },
+                    child: Text('ongoing'),
+                  ),
+                ),
               ),
-              TextButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, '/codechef');
-                },
-                child: Text('codechef'),
+              Card(
+                clipBehavior: Clip.antiAlias,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20)),
+                color: Colors.grey[900],
+                child: Container(
+                  child: OutlinedButton(
+                    style: OutlinedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(18.0),
+                      ),
+                      side: BorderSide(width: 2, color: Colors.cyan),
+                    ),
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/kaggle');
+                    },
+                    child: Text('kaggle'),
+                  ),
+                ),
               ),
-              TextButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, '/kaggle');
-                },
-                child: Text('kaggle'),
+              Card(
+                clipBehavior: Clip.antiAlias,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20)),
+                color: Colors.grey[900],
+                child: Container(
+                  child: OutlinedButton(
+                    style: OutlinedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(18.0),
+                      ),
+                      side: BorderSide(width: 2, color: Colors.cyan),
+                    ),
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/hackerearth');
+                    },
+                    child: Text('hackerearth'),
+                  ),
+                ),
               ),
-              TextButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, '/hackerearth');
-                },
-                child: Text('hackerearth'),
+              Card(
+                clipBehavior: Clip.antiAlias,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20)),
+                color: Colors.grey[900],
+                child: Container(
+                  child: OutlinedButton(
+                    style: OutlinedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(18.0),
+                      ),
+                      side: BorderSide(width: 2, color: Colors.cyan),
+                    ),
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/atcoder');
+                    },
+                    child: Text('atcoder'),
+                  ),
+                ),
               ),
-              TextButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, '/atcoder');
-                },
-                child: Text('atcoder'),
+              Card(
+                clipBehavior: Clip.antiAlias,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20)),
+                color: Colors.grey[900],
+                child: Container(
+                  child: OutlinedButton(
+                    style: OutlinedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(18.0),
+                      ),
+                      side: BorderSide(width: 2, color: Colors.cyan),
+                    ),
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/codeforces');
+                    },
+                    child: Text('codeforces'),
+                  ),
+                ),
               ),
-              TextButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, '/codeforces');
-                },
-                child: Text('codeforces'),
+              Card(
+                clipBehavior: Clip.antiAlias,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20)),
+                color: Colors.grey[900],
+                child: Container(
+                  child: OutlinedButton(
+                    style: OutlinedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(18.0),
+                      ),
+                      side: BorderSide(width: 2, color: Colors.cyan),
+                    ),
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/leetcode');
+                    },
+                    child: Text('leetcode'),
+                  ),
+                ),
               ),
-              TextButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, '/leetcode');
-                },
-                child: Text('leetcode'),
+              Card(
+                clipBehavior: Clip.antiAlias,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20)),
+                color: Colors.grey[900],
+                child: Container(
+                  child: OutlinedButton(
+                    style: OutlinedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(18.0),
+                      ),
+                      side: BorderSide(width: 2, color: Colors.cyan),
+                    ),
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/topcoder');
+                    },
+                    child: Text('topcoder'),
+                  ),
+                ),
               ),
-              TextButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, '/topcoder');
-                },
-                child: Text('topcoder'),
-              )
+              Card(
+                clipBehavior: Clip.antiAlias,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20)),
+                color: Colors.grey[900],
+                child: Container(
+                  child: OutlinedButton(
+                    style: OutlinedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(18.0),
+                      ),
+                      side: BorderSide(width: 2, color: Colors.cyan),
+                    ),
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/codechef');
+                    },
+                    child: Text('codechef'),
+                  ),
+                ),
+              ),
             ],
           ),
         ),

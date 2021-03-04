@@ -1,7 +1,9 @@
 import 'dart:async';
 import 'dart:convert';
+import 'package:cptime/main.dart';
 import 'package:cptime/microservice/timeGetter.dart';
 import 'package:cptime/model/Contest.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
 import '../model/Contest.dart';
 
@@ -36,8 +38,6 @@ Future<List<Contest>> fetchContest() async {
     print(items.length);
     return items;
   } else {
-    // If the server did not return a 200 OK response,
-    // then throw an exception.
-    throw Exception('Failed to load Contest');
+    runApp(MyApp());
   }
 }

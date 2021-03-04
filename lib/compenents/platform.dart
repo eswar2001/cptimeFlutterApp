@@ -9,6 +9,7 @@ Widget ViewBycontest(List<Contest> contest, String s) {
   temporary.removeWhere((item) => item.platform != s);
   temporary.sort((a, b) => b.startTime.compareTo(a.startTime));
   return Container(
+    color: Colors.black,
     child: ListView.builder(
       itemCount: temporary.length,
       padding: const EdgeInsets.all(2.0),
