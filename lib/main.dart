@@ -1,8 +1,9 @@
-import 'package:cptime/model/Contest.dart';
-import 'package:cptime/routes/codechef.dart';
 import 'package:flutter/material.dart';
+import './model/Contest.dart';
+import 'routes/Platform.dart';
+import './routes/ongoing.dart';
+import './routes/upcoming.dart';
 import './services/service.dart';
-import 'compenents/ViewAllcontest.dart';
 
 void main() {
   runApp(MyApp());
@@ -28,93 +29,84 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       initialRoute: '/',
       routes: {
-        '/upcoming': (BuildContext context) => FirstRoute(futureContest),
-        '/ongoing': (BuildContext context) => SecondRoute(futureContest),
-        '/codechef': (BuildContext context) => Codechef(futureContest),
+        '/upcoming': (BuildContext context) => Upcoming(futureContest),
+        '/ongoing': (BuildContext context) => Ongoing(futureContest),
+        '/codechef': (BuildContext context) =>
+            platform(futureContest, "codechef"),
+        '/kaggle': (BuildContext context) => platform(futureContest, "kaggle"),
+        '/hackerearth': (BuildContext context) =>
+            platform(futureContest, "hackerearth"),
+        '/atcoder': (BuildContext context) =>
+            platform(futureContest, "atcoder"),
+        '/codeforces': (BuildContext context) =>
+            platform(futureContest, "codeforces"),
+        '/leetcode': (BuildContext context) =>
+            platform(futureContest, "leetcode"),
+        '/topcoder': (BuildContext context) =>
+            platform(futureContest, "topcoder"),
       },
       home: Builder(
-        builder: (context) => ListView(
-          children: [
-            TextButton(
-              onPressed: () {
-                Navigator.pushNamed(context, '/upcoming');
-              },
-              child: Text('upcoming'),
-            ),
-            TextButton(
-              onPressed: () {
-                Navigator.pushNamed(context, '/ongoing');
-              },
-              child: Text('ongoing'),
-            ),
-            TextButton(
-              onPressed: () {
-                Navigator.pushNamed(context, '/codechef');
-              },
-              child: Text('codechef'),
-            ),
-          ],
+        builder: (context) => Center(
+          child: ListView(
+            children: [
+              TextButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, '/upcoming');
+                },
+                child: Text('upcoming'),
+              ),
+              TextButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, '/ongoing');
+                },
+                child: Text('ongoing'),
+              ),
+              TextButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, '/codechef');
+                },
+                child: Text('codechef'),
+              ),
+              TextButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, '/kaggle');
+                },
+                child: Text('kaggle'),
+              ),
+              TextButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, '/hackerearth');
+                },
+                child: Text('hackerearth'),
+              ),
+              TextButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, '/atcoder');
+                },
+                child: Text('atcoder'),
+              ),
+              TextButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, '/codeforces');
+                },
+                child: Text('codeforces'),
+              ),
+              TextButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, '/leetcode');
+                },
+                child: Text('leetcode'),
+              ),
+              TextButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, '/topcoder');
+                },
+                child: Text('topcoder'),
+              )
+            ],
+          ),
         ),
       ),
     );
   }
 }
-
-// ignore: must_be_immutable
-class FirstRoute extends StatefulWidget {
-  Future<List<Contest>> futureContest;
-  FirstRoute(this.futureContest);
-
-  @override
-  _FirstRouteState createState() => _FirstRouteState();
-}
-
-class _FirstRouteState extends State<FirstRoute> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('First Route'),
-      ),
-      body: FutureBuilder(
-        future: widget.futureContest,
-        builder: (context, snapshot) {
-          // print(snapshot);
-          return snapshot.data != null
-              ? ViewAllcontest(snapshot.data, "upcoming")
-              : Center(child: CircularProgressIndicator());
-        },
-      ),
-    );
-  }
-}
-
-// ignore: must_be_immutable
-class SecondRoute extends StatefulWidget {
-  Future<List<Contest>> futureContest;
-  SecondRoute(this.futureContest);
-
-  @override
-  _SecondRouteState createState() => _SecondRouteState();
-}
-
-class _SecondRouteState extends State<SecondRoute> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Second Route"),
-      ),
-      body: FutureBuilder(
-        future: widget.futureContest,
-        builder: (context, snapshot) {
-          // print(snapshot);
-          return snapshot.data != null
-              ? ViewAllcontest(snapshot.data, "ongoing")
-              : Center(child: CircularProgressIndicator());
-        },
-      ),
-    );
-  }
-}
-// ViewBycontest

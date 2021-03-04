@@ -2,27 +2,33 @@ import 'package:cptime/compenents/platform.dart';
 import 'package:cptime/model/Contest.dart';
 import 'package:flutter/material.dart';
 
-class Codechef extends StatefulWidget {
+// ignore: camel_case_types
+// ignore: must_be_immutable
+class platform extends StatefulWidget {
   Future<List<Contest>> futureContest;
-  Codechef(this.futureContest);
-
+  String where;
+  platform(this.futureContest, this.where);
   @override
-  _CodechefState createState() => _CodechefState();
+  _platformState createState() => _platformState(where);
 }
 
-class _CodechefState extends State<Codechef> {
+// ignore: camel_case_types
+class _platformState extends State<platform> {
+  String where;
+  _platformState(this.where);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Second Route"),
+        title: Text(where),
       ),
       body: FutureBuilder(
         future: widget.futureContest,
         builder: (context, snapshot) {
           // print(snapshot);
           return snapshot.data != null
-              ? ViewBycontest(snapshot.data, "codechef")
+              ? ViewBycontest(snapshot.data, where)
               : Center(child: CircularProgressIndicator());
         },
       ),
