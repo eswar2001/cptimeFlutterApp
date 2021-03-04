@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import './model/Contest.dart';
+import 'compenents/button.dart';
 import 'routes/Platform.dart';
 import './routes/ongoing.dart';
 import './routes/upcoming.dart';
 import './services/service.dart';
+import 'package:lottie/lottie.dart';
 
 void main() {
   runApp(MyApp());
@@ -26,7 +28,12 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: "CpTime",
-      darkTheme: ThemeData.dark(),
+      darkTheme: ThemeData(
+        brightness: Brightness.dark,
+        appBarTheme: AppBarTheme(
+          backgroundColor: Colors.black,
+        ),
+      ),
       debugShowCheckedModeBanner: false,
       initialRoute: '/',
       routes: {
@@ -46,199 +53,27 @@ class _MyAppState extends State<MyApp> {
         '/topcoder': (BuildContext context) =>
             platform(futureContest, "topcoder"),
       },
-      home: Builder(
-        builder: (context) => Container(
-          padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-          decoration: BoxDecoration(
-            color: Colors.black87,
-          ),
-          margin: EdgeInsets.all(16),
-          child: ListView(
-            children: [
-              
-              Card(
-                clipBehavior: Clip.antiAlias,
-                margin: EdgeInsets.all(5.0),
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20)),
-                semanticContainer: true,
-                color: Colors.grey[900],
-                child: Container(
-                  child: OutlinedButton(
-                    style: OutlinedButton.styleFrom(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(18.0),
-                      ),
-                      side: BorderSide(width: 2, color: Colors.cyan),
-                    ),
-                    onPressed: () {
-                      Navigator.pushNamed(context, '/upcoming');
-                    },
-                    child: Text('upcoming'),
-                  ),
-                ),
-              ),
-              Card(
-                clipBehavior: Clip.antiAlias,
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20)),
-                color: Colors.grey[900],
-                child: Container(
-                  child: OutlinedButton(
-                    style: OutlinedButton.styleFrom(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(18.0),
-                      ),
-                      side: BorderSide(width: 2, color: Colors.cyan),
-                    ),
-                    onPressed: () {
-                      Navigator.pushNamed(context, '/ongoing');
-                    },
-                    child: Text('ongoing'),
-                  ),
-                ),
-              ),
-              Card(
-                clipBehavior: Clip.antiAlias,
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20)),
-                color: Colors.grey[900],
-                child: Container(
-                  child: OutlinedButton(
-                    style: OutlinedButton.styleFrom(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(18.0),
-                      ),
-                      side: BorderSide(width: 2, color: Colors.cyan),
-                    ),
-                    onPressed: () {
-                      Navigator.pushNamed(context, '/kaggle');
-                    },
-                    child: Text('kaggle'),
-                  ),
-                ),
-              ),
-              Card(
-                clipBehavior: Clip.antiAlias,
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20)),
-                color: Colors.grey[900],
-                child: Container(
-                  child: OutlinedButton(
-                    style: OutlinedButton.styleFrom(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(18.0),
-                      ),
-                      side: BorderSide(width: 2, color: Colors.cyan),
-                    ),
-                    onPressed: () {
-                      Navigator.pushNamed(context, '/hackerearth');
-                    },
-                    child: Text('hackerearth'),
-                  ),
-                ),
-              ),
-              Card(
-                clipBehavior: Clip.antiAlias,
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20)),
-                color: Colors.grey[900],
-                child: Container(
-                  child: OutlinedButton(
-                    style: OutlinedButton.styleFrom(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(18.0),
-                      ),
-                      side: BorderSide(width: 2, color: Colors.cyan),
-                    ),
-                    onPressed: () {
-                      Navigator.pushNamed(context, '/atcoder');
-                    },
-                    child: Text('atcoder'),
-                  ),
-                ),
-              ),
-              Card(
-                clipBehavior: Clip.antiAlias,
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20)),
-                color: Colors.grey[900],
-                child: Container(
-                  child: OutlinedButton(
-                    style: OutlinedButton.styleFrom(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(18.0),
-                      ),
-                      side: BorderSide(width: 2, color: Colors.cyan),
-                    ),
-                    onPressed: () {
-                      Navigator.pushNamed(context, '/codeforces');
-                    },
-                    child: Text('codeforces'),
-                  ),
-                ),
-              ),
-              Card(
-                clipBehavior: Clip.antiAlias,
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20)),
-                color: Colors.grey[900],
-                child: Container(
-                  child: OutlinedButton(
-                    style: OutlinedButton.styleFrom(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(18.0),
-                      ),
-                      side: BorderSide(width: 2, color: Colors.cyan),
-                    ),
-                    onPressed: () {
-                      Navigator.pushNamed(context, '/leetcode');
-                    },
-                    child: Text('leetcode'),
-                  ),
-                ),
-              ),
-              Card(
-                clipBehavior: Clip.antiAlias,
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20)),
-                color: Colors.grey[900],
-                child: Container(
-                  child: OutlinedButton(
-                    style: OutlinedButton.styleFrom(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(18.0),
-                      ),
-                      side: BorderSide(width: 2, color: Colors.cyan),
-                    ),
-                    onPressed: () {
-                      Navigator.pushNamed(context, '/topcoder');
-                    },
-                    child: Text('topcoder'),
-                  ),
-                ),
-              ),
-              Card(
-                clipBehavior: Clip.antiAlias,
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20)),
-                color: Colors.grey[900],
-                child: Container(
-                  child: OutlinedButton(
-                    style: OutlinedButton.styleFrom(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(18.0),
-                      ),
-                      side: BorderSide(width: 2, color: Colors.cyan),
-                    ),
-                    onPressed: () {
-                      Navigator.pushNamed(context, '/codechef');
-                    },
-                    child: Text('codechef'),
-                  ),
-                ),
-              ),
-            ],
+      home: Padding(
+        padding: const EdgeInsets.only(top: 0.0, left: 8.0, right: 8.0),
+        child: Builder(
+          builder: (context) => Container(
+            decoration: BoxDecoration(
+              color: Colors.black87,
+            ),
+            child: ListView(
+              children: [
+                Lottie.asset('resources/45193-planet-with-disc.zip'),
+                button('hackerearth'),
+                button('kaggle'),
+                button('atcoder'),
+                button('codeforces'),
+                button('leetcode'),
+                button('topcoder'),
+                button('codechef'),
+                button('upcoming'),
+                button('ongoing'),
+              ],
+            ),
           ),
         ),
       ),

@@ -1,6 +1,7 @@
 import 'package:cptime/compenents/platform.dart';
 import 'package:cptime/model/Contest.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 // ignore: camel_case_types
 // ignore: must_be_immutable
@@ -21,7 +22,10 @@ class _platformState extends State<platform> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(where),
+        title: Text(
+          where,
+          style: GoogleFonts.roboto(),
+        ),
       ),
       body: FutureBuilder(
         future: widget.futureContest,

@@ -2,7 +2,7 @@ import 'package:cptime/model/Contest.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:url_launcher/url_launcher.dart';
-
+import 'package:google_fonts/google_fonts.dart';
 Widget ViewAllcontest(List<Contest> contest, String s) {
   List<Contest> temporary = List<Contest>.from(contest);
   temporary.sort((a, b) => b.startTime.compareTo(a.startTime));
@@ -36,14 +36,14 @@ Widget ViewAllcontest(List<Contest> contest, String s) {
               ListTile(
                 subtitle: Text(
                   '${temporary[position].name}',
-                  style: TextStyle(
+                  style: GoogleFonts.roboto(
                       fontSize: 18.0,
                       color: Colors.black,
                       fontWeight: FontWeight.bold),
                 ),
                 title: Text(
                   '${temporary[position].platform.toUpperCase()}',
-                  style: TextStyle(
+                  style: GoogleFonts.roboto(
                       fontSize: 18.0,
                       color: Colors.white,
                       fontWeight: FontWeight.bold),
@@ -51,14 +51,14 @@ Widget ViewAllcontest(List<Contest> contest, String s) {
               ),
               Text(
                 '${DateFormat.yMMMMEEEEd().add_jm().format(temporary[position].startTime)}',
-                style: TextStyle(
+                style: GoogleFonts.roboto(
                     fontSize: 18.0,
                     color: Colors.black,
                     fontWeight: FontWeight.bold),
               ),
               Text(
                 '${DateFormat.yMMMMEEEEd().add_jm().format(temporary[position].endTime)}',
-                style: TextStyle(
+                style: GoogleFonts.roboto(
                     fontSize: 18.0,
                     color: Colors.black,
                     fontWeight: FontWeight.bold),
@@ -73,7 +73,7 @@ Widget ViewAllcontest(List<Contest> contest, String s) {
                         'remind me',
                         textAlign: TextAlign.center,
                         overflow: TextOverflow.ellipsis,
-                        style: TextStyle(
+                        style: GoogleFonts.roboto(
                           fontWeight: FontWeight.bold,
                           color: Colors.white,
                         ),
@@ -99,7 +99,7 @@ Widget ViewAllcontest(List<Contest> contest, String s) {
                         'Start Coding',
                         textAlign: TextAlign.center,
                         overflow: TextOverflow.ellipsis,
-                        style: TextStyle(
+                        style: GoogleFonts.roboto(
                           fontWeight: FontWeight.bold,
                           color: Colors.white,
                         ),

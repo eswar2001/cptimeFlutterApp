@@ -1,6 +1,7 @@
 import 'package:cptime/compenents/ViewAllcontest.dart';
 import 'package:cptime/model/Contest.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class Upcoming extends StatefulWidget {
   Future<List<Contest>> futureContest;
@@ -15,7 +16,10 @@ class _UpcomingState extends State<Upcoming> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('upcoming contests'),
+        title: Text(
+          'upcoming contests',
+          style: GoogleFonts.roboto(),
+        ),
       ),
       body: FutureBuilder(
         future: widget.futureContest,
