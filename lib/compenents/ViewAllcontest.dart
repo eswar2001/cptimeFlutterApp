@@ -13,6 +13,20 @@ Widget ViewAllcontest(List<Contest> contest, String s) {
       itemCount: temporary.length,
       padding: const EdgeInsets.all(2.0),
       itemBuilder: (context, position) {
+        String starttime = temporary[position]
+            .startTime
+            .toUtc()
+            .toIso8601String()
+            .replaceAll('-', '')
+            .replaceAll(':', '')
+            .replaceAll('.', '');
+        String endtime = temporary[position]
+            .endTime
+            .toUtc()
+            .toIso8601String()
+            .replaceAll('-', '')
+            .replaceAll(':', '')
+            .replaceAll('.', '');
         return Card(
           color: temporary[position].startTime.isBefore(DateTime.now())
               ? Colors.orange
@@ -67,11 +81,11 @@ Widget ViewAllcontest(List<Contest> contest, String s) {
                       onPressed: () => {
                         launch(
                             'https://calendar.google.com/event?action=TEMPLATE&dates=' +
-                                temporary[position].startTime.toString() +
-                                '/' +
-                                temporary[position].endTime.toString() +
-                                '&text=' +
-                                Uri.decodeFull(temporary[position].name) +
+                                Uri.encodeFull(starttime) +
+                                'Z/' +
+                                Uri.encodeFull(endtime) +
+                                'Z&text=' +
+                                Uri.encodeFull(temporary[position].name) +
                                 '&location=' +
                                 temporary[position].url)
                       },
