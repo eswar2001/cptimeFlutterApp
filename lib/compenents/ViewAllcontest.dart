@@ -48,22 +48,49 @@ Widget ViewAllcontest(List<Contest> contest, String s) {
                     color: Colors.black,
                     fontWeight: FontWeight.bold),
               ),
-              TextButton(
-                style: ButtonStyle(
-                  backgroundColor:
-                      MaterialStateProperty.all<Color>(Colors.black),
-                ),
-                child: Text(
-                  'Goto temporary',
-                  textAlign: TextAlign.center,
-                  overflow: TextOverflow.ellipsis,
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                  ),
-                ),
-                onPressed: () => {launch(temporary[position].url)},
-              ),
+              (temporary[position].when != "ongoing")
+                  ? TextButton(
+                      style: ButtonStyle(
+                        backgroundColor:
+                            MaterialStateProperty.all<Color>(Colors.black),
+                      ),
+                      child: Text(
+                        'remind me',
+                        textAlign: TextAlign.center,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
+                      ),
+                      onPressed: () => {
+                        launch(
+                            'https://calendar.google.com/event?action=TEMPLATE&dates=' +
+                                temporary[position].startTime.toString() +
+                                '/' +
+                                temporary[position].endTime.toString() +
+                                '&text=' +
+                                Uri.decodeFull(temporary[position].name) +
+                                '&location=' +
+                                temporary[position].url)
+                      },
+                    )
+                  : TextButton(
+                      style: ButtonStyle(
+                        backgroundColor:
+                            MaterialStateProperty.all<Color>(Colors.black),
+                      ),
+                      child: Text(
+                        'Start Coding',
+                        textAlign: TextAlign.center,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
+                      ),
+                      onPressed: () => {launch(temporary[position].url)},
+                    ),
             ],
           ),
         );
