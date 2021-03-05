@@ -38,6 +38,6 @@ Future<List<Contest>> fetchContest() async {
     print(items.length);
     return items;
   } else {
-    runApp(MyApp());
+    print('dataFetchfailed');
   }
 }

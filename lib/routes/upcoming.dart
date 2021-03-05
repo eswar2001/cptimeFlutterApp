@@ -24,9 +24,13 @@ class _UpcomingState extends State<Upcoming> {
       body: FutureBuilder(
         future: widget.futureContest,
         builder: (context, snapshot) {
-          // print(snapshot);
+          List<Contest> contest = snapshot.data;
+          if (snapshot.data != null) {
+            contest = contest.where((i) => i.when == "upcoming").toList();
+            // contest.removeWhere((item) => item.when != "ongoing");
+          }
           return snapshot.data != null
-              ? ViewAllcontest(snapshot.data, "upcoming")
+              ? ViewAllcontest(contest, "upcoming")
               : Center(child: CircularProgressIndicator());
         },
       ),
