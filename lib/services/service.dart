@@ -1,9 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
-import 'package:cptime/main.dart';
 import 'package:cptime/microservice/timeGetter.dart';
 import 'package:cptime/model/Contest.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
 import '../model/Contest.dart';
 

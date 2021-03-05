@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import './model/Contest.dart';
 import 'compenents/button.dart';
 import 'routes/Platform.dart';
 import './routes/ongoing.dart';
 import './routes/upcoming.dart';
 import './services/service.dart';
-import 'package:lottie/lottie.dart';
 
 void main() {
   runApp(MyApp());
@@ -53,27 +53,22 @@ class _MyAppState extends State<MyApp> {
         '/topcoder': (BuildContext context) =>
             platform(futureContest, "topcoder"),
       },
-      home: Padding(
-        padding: const EdgeInsets.only(top: 0.0, left: 8.0, right: 8.0),
-        child: Builder(
-          builder: (context) => Container(
-            decoration: BoxDecoration(
-              color: Colors.black87,
-            ),
-            child: ListView(
-              children: [
-                Lottie.asset('resources/45193-planet-with-disc.zip'),
-                button('hackerearth'),
-                button('kaggle'),
-                button('atcoder'),
-                button('codeforces'),
-                button('leetcode'),
-                button('topcoder'),
-                button('codechef'),
-                button('upcoming'),
-                button('ongoing'),
-              ],
-            ),
+      home: Scaffold(
+        backgroundColor: Colors.black87,
+        body: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: ListView(
+            children: [
+              button('hackerearth'),
+              button('kaggle'),
+              button('atcoder'),
+              button('codeforces'),
+              button('leetcode'),
+              button('topcoder'),
+              button('codechef'),
+              button('upcoming'),
+              button('ongoing'),
+            ],
           ),
         ),
       ),

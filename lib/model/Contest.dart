@@ -1,5 +1,4 @@
 import 'package:cptime/microservice/timeGetter.dart';
-import 'package:intl/intl.dart';
 
 class Contest {
   final String name;
