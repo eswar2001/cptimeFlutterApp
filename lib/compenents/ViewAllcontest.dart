@@ -79,6 +79,11 @@ class _ViewAllcontestState extends State<ViewAllcontest> {
                     .replaceAll(':', '')
                     .replaceAll('.', '');
                 return Card(
+                  color: filteredContest[position]
+                          .startTime
+                          .isBefore(DateTime.now())
+                      ? Colors.orange
+                      : Color(0xff5D4524),
                   child: Column(
                     children: [
                       ListTile(

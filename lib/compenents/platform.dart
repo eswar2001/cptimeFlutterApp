@@ -29,6 +29,9 @@ Widget ViewBycontest(List<Contest> contest, String s) {
             .replaceAll(':', '')
             .replaceAll('.', '');
         return Card(
+          color: temporary[position].startTime.isBefore(DateTime.now())
+              ? Colors.orange
+              :  Color(0xff5D4524),
           child: Column(
             children: [
               ListTile(
