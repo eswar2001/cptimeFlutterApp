@@ -1,14 +1,88 @@
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter/services.dart';
+import 'package:google_fonts/google_fonts.dart';
 import './model/Contest.dart';
 import 'compenents/button.dart';
 import 'routes/Platform.dart';
 import './routes/ongoing.dart';
 import './routes/upcoming.dart';
 import './services/service.dart';
+import 'package:splashscreen/splashscreen.dart';
 
+// ignore: avoid_init_to_null
+Future<List<Contest>> futureContest = null;
 void main() {
-  runApp(MyApp());
+  futureContest = fetchContest();
+  runApp(MaterialApp(
+    darkTheme: ThemeData(
+      brightness: Brightness.dark,
+      appBarTheme: AppBarTheme(
+        backgroundColor: Colors.black,
+      ),
+    ),
+    debugShowCheckedModeBanner: false,
+    home: splashScreen(),
+  ));
+}
+
+class splashScreen extends StatefulWidget {
+  @override
+  _splashScreenState createState() => _splashScreenState();
+}
+
+class _splashScreenState extends State<splashScreen> {
+  @override
+  Widget build(BuildContext context) {
+    if (futureContest == null)
+      return SplashScreen(
+          seconds: 10,
+          navigateAfterSeconds: MyApp(),
+          title: Text(
+            'CpTime',
+            style: GoogleFonts.roboto(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+                fontSize: 50.0),
+          ),
+          loadingText: Text(
+            'Make it work, make it right, make it fast.',
+            style: GoogleFonts.roboto(
+                color: Colors.white,
+                fontStyle: FontStyle.italic,
+                fontWeight: FontWeight.w300,
+                fontSize: 20.0),
+          ),
+          backgroundColor: Colors.black,
+          styleTextUnderTheLoader: GoogleFonts.roboto(),
+          onClick: () => print(""),
+          loaderColor: Colors.cyan);
+    else {
+      return SplashScreen(
+          seconds: 3,
+          navigateAfterSeconds: MyApp(),
+          title: Text(
+            'CpTime',
+            style: GoogleFonts.roboto(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+                fontSize: 50.0),
+          ),
+          loadingText: Text(
+            'Make it work, make it right, make it fast.',
+            style: GoogleFonts.roboto(
+                color: Colors.white,
+                fontStyle: FontStyle.italic,
+                fontWeight: FontWeight.w300,
+                fontSize: 20.0),
+          ),
+          backgroundColor: Colors.black,
+          styleTextUnderTheLoader: GoogleFonts.roboto(),
+          onClick: () => print(""),
+          loaderColor: Colors.cyan);
+    }
+  }
 }
 
 class MyApp extends StatefulWidget {
@@ -17,8 +91,6 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  Future<List<Contest>> futureContest;
-
   @override
   void initState() {
     super.initState();

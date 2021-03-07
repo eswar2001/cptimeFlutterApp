@@ -23,12 +23,24 @@ class _ViewAllcontestState extends State<ViewAllcontest> {
         issetOnce = true;
         filteredContest = widget.contest;
       });
-
     return Scaffold(
+      backgroundColor: Colors.black,
       body: Column(
         children: [
           TextField(
+            style: TextStyle(color: Colors.white),
             decoration: InputDecoration(
+              labelStyle: TextStyle(color: Colors.white),
+              hintStyle: TextStyle(fontSize: 20.0, color: Colors.white),
+              border: OutlineInputBorder(
+                borderSide: BorderSide(
+                  color: Colors.teal,
+                ),
+              ),
+              prefixIcon: const Icon(
+                Icons.search,
+                color: Colors.white,
+              ),
               contentPadding: EdgeInsets.all(15.0),
               hintText: 'Filter by name or platform',
             ),
