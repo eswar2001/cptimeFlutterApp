@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import './model/Contest.dart';
 import 'compenents/button.dart';
+import 'constants/colorprofile.dart';
 import 'routes/Platform.dart';
 import './routes/ongoing.dart';
 import './routes/upcoming.dart';
@@ -16,12 +17,7 @@ Future<List<Contest>> futureContest = null;
 void main() {
   futureContest = fetchContest();
   runApp(MaterialApp(
-    darkTheme: ThemeData(
-      brightness: Brightness.dark,
-      appBarTheme: AppBarTheme(
-        backgroundColor: Colors.black,
-      ),
-    ),
+    theme: darkTheme,
     debugShowCheckedModeBanner: false,
     home: splashScreen(),
   ));
@@ -38,6 +34,7 @@ class _splashScreenState extends State<splashScreen> {
     if (futureContest == null)
       return SplashScreen(
           seconds: 10,
+          backgroundColor: Colors.black,
           navigateAfterSeconds: MyApp(),
           title: Text(
             'CpTime',
@@ -54,13 +51,13 @@ class _splashScreenState extends State<splashScreen> {
                 fontWeight: FontWeight.w300,
                 fontSize: 20.0),
           ),
-          backgroundColor: Colors.black,
           styleTextUnderTheLoader: GoogleFonts.roboto(),
           onClick: () => print(""),
           loaderColor: Colors.cyan);
     else {
       return SplashScreen(
           seconds: 3,
+          backgroundColor: Colors.black,
           navigateAfterSeconds: MyApp(),
           title: Text(
             'CpTime',
@@ -77,7 +74,6 @@ class _splashScreenState extends State<splashScreen> {
                 fontWeight: FontWeight.w300,
                 fontSize: 20.0),
           ),
-          backgroundColor: Colors.black,
           styleTextUnderTheLoader: GoogleFonts.roboto(),
           onClick: () => print(""),
           loaderColor: Colors.cyan);
@@ -91,6 +87,17 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  final List<String> screens = [
+    'hackerearth',
+    'kaggle',
+    'atcoder',
+    'codeforces',
+    'leetcode',
+    'topcoder',
+    'codechef',
+    'upcoming',
+    'ongoing'
+  ];
   @override
   void initState() {
     super.initState();
@@ -100,12 +107,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: "CpTime",
-      darkTheme: ThemeData(
-        brightness: Brightness.dark,
-        appBarTheme: AppBarTheme(
-          backgroundColor: Colors.black,
-        ),
-      ),
+      theme: darkTheme,
       debugShowCheckedModeBanner: false,
       initialRoute: '/',
       routes: {
@@ -125,24 +127,47 @@ class _MyAppState extends State<MyApp> {
         '/topcoder': (BuildContext context) =>
             platform(futureContest, "topcoder"),
       },
-      home: Scaffold(
-        backgroundColor: Colors.black87,
-        body: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: ListView(
-            children: [
-              button('hackerearth'),
-              button('kaggle'),
-              button('atcoder'),
-              button('codeforces'),
-              button('leetcode'),
-              button('topcoder'),
-              button('codechef'),
-              button('upcoming'),
-              button('ongoing'),
-            ],
+      home: CustomScrollView(
+        physics: BouncingScrollPhysics(),
+        clipBehavior: Clip.antiAlias,
+        slivers: [
+          SliverAppBar(
+            elevation: 3.0,
+            pinned: true,
+            snap: true,
+            floating: true,
+            expandedHeight: 200.0,
+            flexibleSpace: FlexibleSpaceBar(
+              title: Text(
+                'CpTime',
+                style: GoogleFonts.openSans(
+                  color: Colors.white,
+                  fontStyle: FontStyle.normal,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20.0,
+                ),
+              ),
+              background: Image.asset('resources/day19-apple-watch.png',
+                  fit: BoxFit.cover),
+            ),
           ),
-        ),
+          SliverGrid(
+            gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+              maxCrossAxisExtent: 300.0,
+              mainAxisSpacing: 5.0,
+              crossAxisSpacing: 5.0,
+              childAspectRatio: 1.25,
+            ),
+            delegate: SliverChildBuilderDelegate(
+              (BuildContext context, int index) {
+                return button(
+                  screens[index],
+                );
+              },
+              childCount: screens.length,
+            ),
+          ),
+        ],
       ),
     );
   }

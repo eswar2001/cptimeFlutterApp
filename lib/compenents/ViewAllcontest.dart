@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:cptime/constants/colorprofile.dart';
 import 'package:cptime/model/Contest.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -23,23 +24,20 @@ class _ViewAllcontestState extends State<ViewAllcontest> {
         issetOnce = true;
         filteredContest = widget.contest;
       });
-    return Scaffold(
-      backgroundColor: Colors.black,
-      body: Column(
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      theme: darkTheme,
+      home: Column(
         children: [
           TextField(
-            style: TextStyle(color: Colors.white),
             decoration: InputDecoration(
-              labelStyle: TextStyle(color: Colors.white),
-              hintStyle: TextStyle(fontSize: 20.0, color: Colors.white),
-              border: OutlineInputBorder(
-                borderSide: BorderSide(
-                  color: Colors.teal,
-                ),
+              labelStyle: TextStyle(),
+              hintStyle: TextStyle(
+                fontSize: 20.0,
               ),
+              border: OutlineInputBorder(),
               prefixIcon: const Icon(
                 Icons.search,
-                color: Colors.white,
               ),
               contentPadding: EdgeInsets.all(15.0),
               hintText: 'Filter by name or platform',
@@ -81,57 +79,38 @@ class _ViewAllcontestState extends State<ViewAllcontest> {
                     .replaceAll(':', '')
                     .replaceAll('.', '');
                 return Card(
-                  color: filteredContest[position]
-                          .startTime
-                          .isBefore(DateTime.now())
-                      ? Colors.orange
-                      : Colors.blueAccent,
                   child: Column(
                     children: [
                       ListTile(
                         subtitle: Text(
                           '${filteredContest[position].name}',
                           style: GoogleFonts.roboto(
-                              fontSize: 18.0,
-                              color: Colors.black,
-                              fontWeight: FontWeight.bold),
+                              fontSize: 18.0, fontWeight: FontWeight.bold),
                         ),
                         title: Text(
                           '${filteredContest[position].platform.toUpperCase()}',
                           style: GoogleFonts.roboto(
-                              fontSize: 18.0,
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold),
+                              fontSize: 18.0, fontWeight: FontWeight.bold),
                         ),
                       ),
                       Text(
                         '${DateFormat.yMMMMEEEEd().add_jm().format(filteredContest[position].startTime)}',
                         style: GoogleFonts.roboto(
-                            fontSize: 18.0,
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold),
+                            fontSize: 18.0, fontWeight: FontWeight.bold),
                       ),
                       Text(
                         '${DateFormat.yMMMMEEEEd().add_jm().format(filteredContest[position].endTime)}',
                         style: GoogleFonts.roboto(
-                            fontSize: 18.0,
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold),
+                            fontSize: 18.0, fontWeight: FontWeight.bold),
                       ),
                       (filteredContest[position].when != "ongoing")
                           ? TextButton(
-                              style: ButtonStyle(
-                                backgroundColor:
-                                    MaterialStateProperty.all<Color>(
-                                        Colors.black),
-                              ),
                               child: Text(
                                 'remind me',
                                 textAlign: TextAlign.center,
                                 overflow: TextOverflow.ellipsis,
                                 style: GoogleFonts.roboto(
                                   fontWeight: FontWeight.bold,
-                                  color: Colors.white,
                                 ),
                               ),
                               onPressed: () => {
@@ -148,18 +127,12 @@ class _ViewAllcontestState extends State<ViewAllcontest> {
                               },
                             )
                           : TextButton(
-                              style: ButtonStyle(
-                                backgroundColor:
-                                    MaterialStateProperty.all<Color>(
-                                        Colors.black),
-                              ),
                               child: Text(
                                 'Start Coding',
                                 textAlign: TextAlign.center,
                                 overflow: TextOverflow.ellipsis,
                                 style: GoogleFonts.roboto(
                                   fontWeight: FontWeight.bold,
-                                  color: Colors.white,
                                 ),
                               ),
                               onPressed: () =>

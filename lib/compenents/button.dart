@@ -6,32 +6,26 @@ class button extends StatelessWidget {
   button(this.s);
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(4.0),
-      child: Material(
-        type: MaterialType.card,
-        shadowColor: Colors.grey,
-        elevation: 3.0,
-        color: Colors.grey[900],
-        child: ListTile(
-          leading: Text(s.toUpperCase(),
-              style: GoogleFonts.roboto(
-                  color: Colors.white,
-                  fontSize: 20.0,
-                  fontStyle: FontStyle.normal)),
-          tileColor: Colors.blueAccent,
-          contentPadding: EdgeInsets.all(5.0),
-          trailing: OutlinedButton(
-            clipBehavior: Clip.antiAlias,
-            style: OutlinedButton.styleFrom(
-                visualDensity: VisualDensity.comfortable,
-                backgroundColor: Colors.black87,
-                shadowColor: Colors.grey),
-            onPressed: () {
-              Navigator.pushNamed(context, '/$s');
-            },
-            child: Text('Show List',
-                style: GoogleFonts.roboto(color: Colors.white, fontSize: 18.0)),
+    return ClipRRect(
+      clipBehavior: Clip.antiAlias,
+      borderRadius: BorderRadius.all(Radius.circular(15)),
+      child: OutlinedButton(
+        clipBehavior: Clip.antiAlias,
+        style: OutlinedButton.styleFrom(
+          backgroundColor: Colors.grey[600],
+          minimumSize: Size(190.0, 190.0),
+          visualDensity: VisualDensity.comfortable,
+        ),
+        onPressed: () {
+          Navigator.pushNamed(context, '/$s');
+        },
+        child: Text(
+          s[0].toUpperCase() + s.substring(1),
+          style: GoogleFonts.openSans(
+            letterSpacing: 1.5,
+            fontWeight: FontWeight.w600,
+            fontStyle: FontStyle.normal,
+            fontSize: 18.0,
           ),
         ),
       ),
