@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "115845221729",
+    "project_id": "competitive-programming-resour",
+    "storage_bucket": "competitive-programming-resour.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:115845221729:android:d0af295785300f5ca24920",
+        "android_client_info": {
+          "package_name": "com.example.cptime"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "115845221729-vv61l7mgcvqnt523h5n0ftvnrl42g4je.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyALfSavy4t0kSeQQjidS3QYwgpOd5letGM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "115845221729-vv61l7mgcvqnt523h5n0ftvnrl42g4je.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
